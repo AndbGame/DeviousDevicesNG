@@ -240,8 +240,16 @@ bool DeviousDevices::NodeHider::ShouldHideWeapons(RE::Actor* a_actor) const
 bool DeviousDevices::NodeHider::AddHideNode(RE::Actor* a_actor, std::string a_nodename)
 {
     if (a_actor == nullptr) return false;
-    
-    RE::NiNode* loc_thirdpersonNode = a_actor->Get3D(false)->AsNode();
+
+    if (!a_actor->Is3DLoaded()) {
+        WARN("NodeHider::RemoveHideNode() - Is3DLoaded() false!!!")
+    }
+    auto _3d = a_actor->Get3D(false);
+    if (_3d == nullptr) {
+        WARN("NodeHider::RemoveHideNode() - _3d is nullptr!!!")
+    }
+
+    RE::NiNode* loc_thirdpersonNode = _3d->AsNode();  // a_actor->Get3D(false)->AsNode();
     
     if (loc_thirdpersonNode == nullptr) return false;
     
@@ -259,8 +267,16 @@ bool DeviousDevices::NodeHider::AddHideNode(RE::Actor* a_actor, std::string a_no
 bool DeviousDevices::NodeHider::RemoveHideNode(RE::Actor* a_actor, std::string a_nodename)
 {
     if (a_actor == nullptr) return false;
+
+    if (!a_actor->Is3DLoaded()) {
+        WARN("NodeHider::RemoveHideNode() - Is3DLoaded() false!!!")
+    }
+    auto _3d = a_actor->Get3D(false);
+    if (_3d == nullptr) {
+        WARN("NodeHider::RemoveHideNode() - _3d is nullptr!!!")
+    }
         
-    RE::NiNode* loc_thirdpersonNode = a_actor->Get3D(false)->AsNode();
+    RE::NiNode* loc_thirdpersonNode = _3d->AsNode();  // a_actor->Get3D(false)->AsNode();
     
     if (loc_thirdpersonNode == nullptr) return false;
     
