@@ -358,9 +358,7 @@ namespace DeviousDevices
 
         RE::BSFaceGenAnimationData* loc_expdata = a_actor->GetFaceGenAnimationData();
 
-        if (loc_expdata == nullptr) {
-            LOG("ExpressionManager::ResetGagExpression - loc_expdata nullptr")
-        };
+        if (loc_expdata == nullptr) return;
 
         RE::BSSpinLockGuard locker(loc_expdata->lock);
 
