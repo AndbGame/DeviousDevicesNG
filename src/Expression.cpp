@@ -451,6 +451,7 @@ namespace DeviousDevices
                 UpdateGagExpression(a_actor);
             }
         });
+        LOG("UpdateGagExpForNPCs() done")
 
         return loc_updated;
     }
