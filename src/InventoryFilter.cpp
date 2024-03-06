@@ -128,6 +128,11 @@ bool DeviousDevices::InventoryFilter::EquipFilter(RE::Actor* a_actor, RE::TESBou
         }
     }
 
+    if (a_item->Is(RE::FormType::Shout) && ActorHasBlockingGag(a_actor))  // filter all Shouts
+    {
+        return true;
+    }
+
     // == Equip check
     if ((a_item->Is(RE::FormType::Spell) || a_item->Is(RE::FormType::Weapon) || a_item->Is(RE::FormType::Light) ||
          (a_item->Is(RE::FormType::Armor) && !IsDevious(a_item) && !IsStrapon(a_item)))) 
